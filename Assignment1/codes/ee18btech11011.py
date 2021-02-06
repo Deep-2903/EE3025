@@ -27,7 +27,7 @@ def DFT(f):
 	for k in range(N):
 		output = complex(0)
 		for n in range(N):
-			tmp = -1j*2*np.pi*k*n/N
+			tmp = -j*2*np.pi*k*n/N
 			output += f[n]*np.exp(tmp)
 		F.append(output)
 	return F
