@@ -21,15 +21,15 @@ def h(M):
 
 h = h(M)
 
-def DFT(s):
-	S = []
-	N = len(s)
+def DFT(f):
+	F = []
+	N = len(f)
 	for k in range(N):
 		output = complex(0)
 		for n in range(N):
-			output += s[n]*np.exp(-1j*2*np.pi*k*n/N)
-		S.append(output)
-	return S
+			output += f[n]*np.exp(-1j*2*np.pi*k*n/N)
+		F.append(output)
+	return F
 	
 print ("DFT of x(n)\n",DFT(x))
 print()
