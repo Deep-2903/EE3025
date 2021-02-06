@@ -16,8 +16,7 @@ def h(M):
 			output += (-1/2)**i
 		if i-2 >= 0:
 			output += (-1/2)**(i-2)
-		h.append(output)
-		
+		h.append(output)		
 	return h
 
 h = h(M)
@@ -26,10 +25,10 @@ def DFT(s):
 	S = []
 	N = len(s)
 	for k in range(N):
-		o = 0 * 1j
+		output = complex(0)
 		for n in range(N):
-			o += s[n] * np.exp(-1j*2*np.pi*k*n/N)
-		S.append(o)
+			output += s[n]*np.exp(-1j*2*np.pi*k*n/N)
+		S.append(output)
 	return S
 	
 print ("DFT of x(n)\n",DFT(x))
