@@ -6,11 +6,10 @@ import shlex
 
 x = [1,2,3,4,2,1]
 N = len(x)
-M = 2*N
-
-def h(M):
+# We will assume the length of h(n) same as x(n) for the calculations.
+def h(N):
 	h = []
-	for i in range(M):
+	for i in range(N):
 		output = 0;
 		if i >= 0:
 			output += (-1/2)**i
@@ -19,7 +18,7 @@ def h(M):
 		h.append(output)		
 	return h
 
-h = h(M)
+h = h(N)
 
 def DFT(f):
 	F = []
@@ -42,7 +41,7 @@ ax[0][0].stem(range(0,N),x)
 ax[0][0].set_title(r'$x(n)$')
 ax[0][0].grid()
 
-ax[0][1].stem(range(0,M),h)
+ax[0][1].stem(range(0,N),h)
 ax[0][1].set_title(r'$h(n)$')
 ax[0][1].grid()
 
@@ -54,11 +53,11 @@ ax[1][1].stem(range(0,N),np.angle(DFT(x)))
 ax[1][1].set_title(r'$phase(DFT(x))$')
 ax[1][1].grid()
 
-ax[2][0].stem(range(0,M),np.abs(DFT(h)))
+ax[2][0].stem(range(0,N),np.abs(DFT(h)))
 ax[2][0].set_title(r'$|DFT(h)|$')
 ax[2][0].grid()
 
-ax[2][1].stem(range(0,M),np.angle(DFT(h)))
+ax[2][1].stem(range(0,N),np.angle(DFT(h)))
 ax[2][1].set_title(r'$phase(DFT(h))$')
 ax[2][1].grid()
 
