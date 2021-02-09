@@ -42,56 +42,21 @@ ax[0][0].stem(range(0,N),x)
 ax[0][0].set_title(r'$x(n)$')
 ax[0][0].grid()
 
-#If using termux
-#plt.savefig('/home/deep/Documents/figs/ee18btech11011_fig1.pdf')
-#plt.savefig('/home/deep/Documents/figs/ee18btech11011_fig1.eps')
-#subprocess.run(shlex.split("/home/deep/Documents/figs/ee18btech11011_fig1.pdf"))
-#else
-#plt.show()
-
 ax[0][1].stem(range(0,M),h)
 ax[0][1].set_title(r'$h(n)$')
 ax[0][1].grid()
-
-#If using termux
-#plt.savefig('/home/deep/Documents/figs/ee18btech11011_fig2.pdf')
-#plt.savefig('/home/deep/Documents/figs/ee18btech11011_fig2.eps')
-#subprocess.run(shlex.split("/home/deep/Documents/figs/ee18btech11011_fig2.pdf"))
-#else
-#plt.show()
 
 ax[1][0].stem(range(0,N),np.abs(DFT(x)))
 ax[1][0].set_title(r'$|DFT(x)|$')
 ax[1][0].grid()
 
-#If using termux
-#plt.savefig('/home/deep/Documents/figs/ee18btech11011_fig3.pdf')
-#plt.savefig('/home/deep/Documents/figs/ee18btech11011_fig3.eps')
-#subprocess.run(shlex.split("/home/deep/Documents/figs/ee18btech11011_fig3.pdf"))
-#else
-#plt.show()
-
 ax[1][1].stem(range(0,N),np.angle(DFT(x)))
 ax[1][1].set_title(r'$phase(DFT(x))$')
 ax[1][1].grid()
 
-#If using termux
-#plt.savefig('/home/deep/Documents/figs/ee18btech11011_fig4.pdf')
-#plt.savefig('/home/deep/Documents/figs/ee18btech11011_fig4.eps')
-#subprocess.run(shlex.split("/home/deep/Documents/figs/ee18btech11011_fig4.pdf"))
-#else
-#plt.show()
-
 ax[2][0].stem(range(0,M),np.abs(DFT(h)))
 ax[2][0].set_title(r'$|DFT(h)|$')
 ax[2][0].grid()
-
-#If using termux
-#plt.savefig('/home/deep/Documents/figs/ee18btech11011_fig5.pdf')
-#plt.savefig('/home/deep/Documents/figs/ee18btech11011_fig5.eps')
-#subprocess.run(shlex.split("/home/deep/Documents/figs/ee18btech11011_fig5.pdf"))
-#else
-#plt.show()
 
 ax[2][1].stem(range(0,M),np.angle(DFT(h)))
 ax[2][1].set_title(r'$phase(DFT(h))$')
