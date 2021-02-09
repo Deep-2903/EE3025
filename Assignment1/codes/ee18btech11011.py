@@ -36,74 +36,40 @@ print ("DFT of x(n)\n",DFT(x))
 print()
 print ("DFT of h(n)\n",DFT(h))
 
+plt.figure(figsize=(12,12))
+plt.subplot(3,2,1)
 plt.stem(range(0,N),x)
-plt.xlabel('$n$')
-plt.ylabel('$x(n)$')
+plt.title('$x(n)$')
 plt.grid()
 
-#If using termux
-#plt.savefig('../figs/ee18btech11011_fig1.pdf')
-#plt.savefig('../figs/ee18btech11011_fig1.eps')
-#subprocess.run(shlex.split("termux-open ../figs/ee18btech11011_fig1.pdf"))
-#else
-plt.show()
-
+plt.subplot(3,2,2)
 plt.stem(range(0,M),h)
-plt.xlabel('$n$')
-plt.ylabel('$h(n)$')
+plt.title('$h(n)$')
 plt.grid()
 
-#If using termux
-#plt.savefig('../figs/ee18btech11011_fig2.pdf')
-#plt.savefig('../figs/ee18btech11011_fig2.eps')
-#subprocess.run(shlex.split("termux-open ../figs/ee18btech11011_fig2.pdf"))
-#else
-plt.show()
-
+plt.subplot(3,2,3)
 plt.stem(range(0,N),np.abs(DFT(x)))
-plt.xlabel('$n$')
-plt.ylabel('$|DFT(x)|$')
+plt.title('$|DFT(x)|$')
 plt.grid()
 
-#If using termux
-#plt.savefig('../figs/ee18btech11011_fig3.pdf')
-#plt.savefig('../figs/ee18btech11011_fig3.eps')
-#subprocess.run(shlex.split("termux-open ../figs/ee18btech11011_fig3.pdf"))
-#else
-plt.show()
-
+plt.subplot(3,2,4)
 plt.stem(range(0,N),np.angle(DFT(x)))
-plt.xlabel('$n$')
-plt.ylabel('$phase(DFT(x))$')
+plt.title('$phase(DFT(x))$')
 plt.grid()
 
-#If using termux
-#plt.savefig('../figs/ee18btech11011_fig4.pdf')
-#plt.savefig('../figs/ee18btech11011_fig4.eps')
-#subprocess.run(shlex.split("termux-open ../figs/ee18btech11011_fig4.pdf"))
-#else
-plt.show()
-
+plt.subplot(3,2,5)
 plt.stem(range(0,M),np.abs(DFT(h)))
-plt.xlabel('$n$')
-plt.ylabel('$|DFT(h)|$')
+plt.title('$|DFT(h)|$')
 plt.grid()
 
-#If using termux
-#plt.savefig('../figs/ee18btech11011_fig5.pdf')
-#plt.savefig('../figs/ee18btech11011_fig5.eps')
-#subprocess.run(shlex.split("termux-open ../figs/ee18btech11011_fig5.pdf"))
-#else
-plt.show()
-
+plt.subplot(3,2,6)
 plt.stem(range(0,M),np.angle(DFT(h)))
-plt.xlabel('$n$')
-plt.ylabel('$phase(DFT(h))$')
+plt.title('$phase(DFT(h))$')
 plt.grid()
 
 #If using termux
-#plt.savefig('../figs/ee18btech11011_fig6.pdf')
-#plt.savefig('../figs/ee18btech11011_fig6.eps')
-#subprocess.run(shlex.split("termux-open ../figs/ee18btech11011_fig6.pdf"))
+plt.savefig('../figs/figs.pdf')
+plt.savefig('../figs/figs.eps')
+subprocess.run(shlex.split("termux-open ../figs/figs.pdf"))
 #else
-plt.show()
+#plt.show()
