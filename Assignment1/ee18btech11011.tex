@@ -159,12 +159,12 @@ We know that Impulse response of the LTI system is the output of the system when
 
 Now we know that DFT of a Input Signal $x(n)$ is give as :
 \begin{align}
-    X(k) \triangleq \sum_{n=0}^{N-1}x(n)e^{-j2\pi kn/N},\quad k=0,1, \ldots, N-1
+    X(k) \triangleq \sum_{n=0}^{N-1}x(n)e^{-j2\pi kn/N},\quad k=0,1, \ldots, N-1 \label{eq:2.0.2}
 \end{align}
 
 and similarly the DFT of Impulse Response $h(n)$ is,
 \begin{align}
-    H(k) \triangleq \sum_{n=0}^{N-1}h(n)e^{-j2\pi kn/N},\quad k=0,1, \ldots, N-1
+    H(k) \triangleq \sum_{n=0}^{N-1}h(n)e^{-j2\pi kn/N},\quad k=0,1, \ldots, N-1 \label{eq:2.0.3}
 \end{align}
 Now to compute the DFT of $x(n)$ and $h(n)$ we use the following python code.
 \begin{lstlisting}
@@ -174,5 +174,91 @@ Using the above code we get the following plots.
 \begin{lstlisting}
 https://github.com/Deep-2903/EE3025/Assignment1/figs
 \end{lstlisting}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{figs.eps}
+    \caption{x(n), h(n) and their DFT}
+    \label{figs}
 \end{figure}
+
+Theoritically finding $X(k)$ and $H(k)$. From given x(n) we know that N = 6. Now on solving equation \eqref{eq:2.0.2} for each of the values of k we get (Note: decimal values are rounded off to first 3 values),
+\begin{align}
+    X(0) = x(0) + x(1) + x(2) + x(3) + x(4) + x(5)
+\end{align}
+\begin{align}
+    \implies X(0) = 13 + 0j
+\end{align}
+\begin{align}
+    X(1) = x(0) + x(1)e^{-j\pi /3} + ... + x(5)e^{-j5\pi /3}
+\end{align}
+\begin{align}
+    \implies X(1) = -4 - 1.732j
+\end{align}
+\begin{align}
+    X(2) = x(0) + x(1)e^{-2j\pi /3} + ... + x(5)e^{-2j5\pi /3}
+\end{align}
+\begin{align}
+    \implies X(2) = 1 + 0j
+\end{align}
+Similarly we get,
+\begin{align}
+    X(3) = -1 + 0j
+\end{align}
+\begin{align}
+    X(4) = 1 + 0j
+\end{align}
+\begin{align}
+    X(5) = -4 + 1.732j
+\end{align}
+Now to find $H(k)$ we need to know h(n) first. So we will first calculate h(n). For that we need to first find the Y(z) by applying Z-transform on equation \eqref{eq:1.0.2} i.e.,
+\begin{align}
+    Y(z) + \frac{1}{2}z^{-1}Y(z)=X(z) + z^{-2}X(z)
+\end{align}
+\begin{align}
+    \implies Y(z)=\frac{2(z^2+1)}{z(2z+1)}X(z)
+\end{align}
+Now we can find H(z) using Y(z) i.e.,
+\begin{align}
+    H(z) = \frac{Y(z)}{X(z)}
+\end{align}
+\begin{align}
+    H(z) = \frac{2(z^2+1)}{z(2z+1)}
+\end{align}
+\begin{align}
+    H(z) = \frac{1+z^{-2}}{1+\frac{1}{2}z^{-1}}
+\end{align}
+From this we can say that h(n) is,
+\begin{align}
+    h(n)= Z^{-1}\sbrak{\frac{1}{1+\frac{1}{2}z^{-1}} + \frac{z^{-2}}{1+\frac{1}{2}z^{-1}}}
+\end{align}
+\begin{align}
+    h(n)=\sbrak{\frac{-1}{2}}^nu(n) + \sbrak{\frac{-1}{2}}^{n-2}u(n-2)
+\end{align}
+Now for the calculations we can assume that length of h(n) is same as length of x(n) i.e., N = 6.Now on solving equation \eqref{eq:2.0.3} for each value of k we get,
+\begin{align}
+    H(0) = h(0) + h(1) + h(2) + h(3) + h(4) + h(5)
+\end{align}
+\begin{align}
+    \implies H(0) = 1.28125 + 0j
+\end{align}
+\begin{align}
+    H(1) = h(0) + h(1)e^{-j\pi /3} + ... + h(5)e^{-j5\pi /3}
+\end{align}
+\begin{align}
+    \implies H(1) = 0.51625 - 0.5141875j
+\end{align}
+Similarly we get,
+\begin{align}
+    H(2) = -0.078125 + 1.1095625j
+\end{align}
+\begin{align}
+    H(3) = 3.84375 + 0j
+\end{align}
+\begin{align}
+    H(4) = -0.071825 - 1.1095625j
+\end{align}
+\begin{align}
+    H(5) = 0.515625 + 0.5141875j
+\end{align}
+The values we got from the code are approximately the same as these which we got theoritically.
 \end{document}
