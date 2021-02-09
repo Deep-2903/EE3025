@@ -27,7 +27,7 @@ def DFT(f):
 	for k in range(N):
 		output = complex(0)
 		for n in range(N):
-			tmp = -j*2*np.pi*k*n/N
+			tmp = -1j*2*np.pi*k*n/N
 			output += f[n]*np.exp(tmp)
 		F.append(output)
 	return F
@@ -60,9 +60,9 @@ plt.grid()
 #else
 plt.show()
 
-plt.stem(range(0,N),DFT(x))
+plt.stem(range(0,N),np.abs(DFT(x)))
 plt.xlabel('$n$')
-plt.ylabel('$DFT(x)$')
+plt.ylabel('$|DFT(x)|$')
 plt.grid()
 
 #If using termux
@@ -72,14 +72,38 @@ plt.grid()
 #else
 plt.show()
 
-plt.stem(range(0,M),DFT(h))
+plt.stem(range(0,N),np.angle(DFT(x)))
 plt.xlabel('$n$')
-plt.ylabel('$DFT(h)$')
+plt.ylabel('$phase(DFT(x))$')
 plt.grid()
 
 #If using termux
 #plt.savefig('../figs/ee18btech11011_fig4.pdf')
 #plt.savefig('../figs/ee18btech11011_fig4.eps')
 #subprocess.run(shlex.split("termux-open ../figs/ee18btech11011_fig4.pdf"))
+#else
+plt.show()
+
+plt.stem(range(0,M),np.abs(DFT(h)))
+plt.xlabel('$n$')
+plt.ylabel('$|DFT(h)|$')
+plt.grid()
+
+#If using termux
+#plt.savefig('../figs/ee18btech11011_fig5.pdf')
+#plt.savefig('../figs/ee18btech11011_fig5.eps')
+#subprocess.run(shlex.split("termux-open ../figs/ee18btech11011_fig5.pdf"))
+#else
+plt.show()
+
+plt.stem(range(0,M),np.angle(DFT(h)))
+plt.xlabel('$n$')
+plt.ylabel('$phase(DFT(h))$')
+plt.grid()
+
+#If using termux
+#plt.savefig('../figs/ee18btech11011_fig6.pdf')
+#plt.savefig('../figs/ee18btech11011_fig6.eps')
+#subprocess.run(shlex.split("termux-open ../figs/ee18btech11011_fig6.pdf"))
 #else
 plt.show()
